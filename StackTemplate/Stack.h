@@ -15,7 +15,7 @@ public:
 	void Push(T data);
 	T Peek();
 	T Pop();
-	void isEmpty();
+	bool isEmpty();
 };
 
 template<class T>
@@ -46,12 +46,18 @@ void Stack<T>::Push(T data)
 template<class T>
 T Stack<T>::Peek()
 {
+	if (isEmpty())
+		throw "Cant cant peek at an empty stack";
+
 	return m_head->getData();
 }
 
 template<class T>
 T Stack<T>::Pop()
 {
+	if (isEmpty())
+		throw "Cant pop from an empty stack";
+
 	Node<T> *tempPtr;
 	T tempData;
 	tempPtr = m_head;
@@ -62,9 +68,11 @@ T Stack<T>::Pop()
 }
 
 template<class T>
-void Stack<T>::isEmpty()
+bool Stack<T>::isEmpty()
 {
-	if (!m_head)
+	if (m_head)
+		return false;
+	else
 		return true;
 }
 #endif

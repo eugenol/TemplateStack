@@ -5,12 +5,22 @@ int main(int argc, char **argv)
 {
 	Stack<int> testStack;
 
-	for (int i = 0; i < 10;i++)
-		testStack.Push(i);
-
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 5; i++)
 	{
-		std::cout << testStack.Pop() << std::endl;
+		testStack.Push(i);
+	}
+
+	//for (int i = 0; i < 10; i++)
+	while (!testStack.isEmpty())
+	{
+		try
+		{
+			std::cout << testStack.Pop() << std::endl;
+		}
+		catch (char *message)
+		{
+			std::cout << message << std::endl;
+		}
 	}
 
 	return 0;
